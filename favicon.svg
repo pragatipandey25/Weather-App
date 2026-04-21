@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Weather App favicon">
+  <defs>
+    <linearGradient id="sun" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd166"/>
+      <stop offset="100%" stop-color="#fca311"/>
+    </linearGradient>
+    <linearGradient id="cloud" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e9f1ff"/>
+      <stop offset="100%" stop-color="#b7c9e6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#1f3b5c"/>
+  <circle cx="25" cy="24" r="12" fill="url(#sun)"/>
+  <path d="M22 42c0-5.5 4.5-10 10-10 3.3 0 6.3 1.6 8.1 4.2 0.9-0.4 1.9-0.6 2.9-0.6 4.1 0 7.5 3.4 7.5 7.5S47.1 50.6 43 50.6H29.5C25.4 50.6 22 47.2 22 43.1z" fill="url(#cloud)"/>
+</svg>
