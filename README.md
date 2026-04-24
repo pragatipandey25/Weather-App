@@ -1,24 +1,23 @@
 # Weather App
 
-A React + TypeScript weather application built with Vite.
+A fast React + TypeScript weather app built with Vite. Search for any city and see the current conditions pulled from Open-Meteo, including temperature, feels-like temperature, humidity, wind speed, UV index, and a readable weather summary.
 
-The app lets you search for a city and shows current weather details, including:
+## Features
 
-- Temperature
-- Feels like temperature
-- Humidity
-- Wind speed
-- UV index
-- Human-readable weather description
+- City search with loading and error states
+- Current weather lookup using public Open-Meteo APIs
+- Simple weather cards with icon, summary, and key metrics
+- TypeScript-based component structure
+- Zero API key setup required
 
-## Data Source
+## How It Works
 
-This project uses public Open-Meteo APIs:
+The app uses two Open-Meteo endpoints in sequence:
 
-- Geocoding: `https://geocoding-api.open-meteo.com/v1/search`
-- Forecast/current weather: `https://api.open-meteo.com/v1/forecast`
+1. It geocodes the city name with `https://geocoding-api.open-meteo.com/v1/search`.
+2. It uses the returned coordinates to fetch current weather from `https://api.open-meteo.com/v1/forecast`.
 
-No API key is required for the current implementation.
+If the city cannot be found, the UI shows a friendly error message instead of empty results.
 
 ## Tech Stack
 
@@ -31,7 +30,7 @@ No API key is required for the current implementation.
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 18 or newer
 - npm
 
 ### Install Dependencies
@@ -40,20 +39,38 @@ No API key is required for the current implementation.
 npm install
 ```
 
-### Run Development Server
+### Start the Dev Server
 
 ```bash
 npm run dev
 ```
 
-Vite will print a local URL, usually `http://localhost:5173`.
+Vite will print a local address, usually `http://localhost:5173`.
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+### Preview the Production Build
+
+```bash
+npm run preview
+```
+
+### Run Lint Checks
+
+```bash
+npm run lint
+```
 
 ## Available Scripts
 
-- `npm run dev`: Start development server.
-- `npm run build`: Type-check and build for production.
-- `npm run preview`: Preview the production build locally.
-- `npm run lint`: Run ESLint checks.
+- `npm run dev` starts the development server.
+- `npm run build` type-checks and builds the app for production.
+- `npm run preview` serves the production build locally.
+- `npm run lint` runs ESLint across the project.
 
 ## Project Structure
 
@@ -69,10 +86,22 @@ src/
   main.tsx
   index.css
 index.html
-favicon.svg
+netlify.toml
 ```
 
-## Notes
+## Repository Notes
 
-- The favicon is served from `favicon.svg` referenced in `index.html`.
-- If the favicon does not appear updated, hard refresh the browser (`Ctrl+F5`) to clear favicon cache.
+- The app is organized into a small container component and two feature components: search and weather display.
+- Weather descriptions are mapped from Open-Meteo weather codes in `src/App.tsx`.
+- Weather icons are derived from the same weather codes in `src/components/Weather.tsx`.
+- If you update the favicon or browser icon, hard refresh the browser to clear cached assets.
+
+## Deployment
+
+The repo includes `netlify.toml`, so it is ready to be deployed on Netlify with the default Vite build output.
+
+## Troubleshooting
+
+- If searches return no results, try a more specific city name.
+- If the app appears stale after a change, refresh the page and restart the dev server.
+- If the browser still shows an old favicon, perform a hard refresh.
